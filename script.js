@@ -14,10 +14,16 @@ setInterval(()=>{
     obstacle=document.querySelector(".obstacle");
     gameOver=document.querySelector(".gameOver");
 
-    dx=window.getComputedStyle(mario,null).getPropertyValue('left')
-    dy=window.getComputedStyle(mario,null).getPropertyValue('top');
+    dx=parseInt(window.getComputedStyle(mario,null).getPropertyValue('left'))
+    dy=parseInt(window.getComputedStyle(mario,null).getPropertyValue('top'));
     
-    ox=window.getComputedStyle(obstacle,null).getPropertyValue('left');
-    oy=window.getComputedStyle(obstacle,null).getPropertyValue('top');
-    console.log(ox);
+    ox=parseInt(window.getComputedStyle(obstacle,null).getPropertyValue('left'));
+    oy=parseInt(window.getComputedStyle(obstacle,null).getPropertyValue('top'));
+    
+    offsetX=Math.abs(dx-ox)
+    offsetY=Math.abs(dy-oy)
+
+    if(offsetX<93 && offsetY<52){
+        obstacle.classList.remove('obstacleAni')
+    }
 },100)
