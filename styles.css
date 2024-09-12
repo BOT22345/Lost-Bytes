@@ -4,7 +4,8 @@
 }
 
 body{
-    background-color: red;
+    /* background-color: red; */
+    overflow:hidden;
 }
 
 .gameContainer{
@@ -34,4 +35,39 @@ body{
     position:absolute;
     bottom:11vh;
     left:300px;
+}
+
+.animateMario{
+    animation:marioAnimation 1s linear;
+}
+
+.obstacleAni{
+    animation:obstacleAni 5s linear infinite;
+}
+
+@keyframes marioAnimation{
+    0%{
+        bottom:0px;
+    }
+    25%{
+        bottom:200px;
+    }
+    50%{
+        bottom:400px;
+    }
+    75%{
+        bottom:200px;
+    }
+    100%{
+        bottom:0px;
+    }
+}
+
+@keyframes obstacleAni{
+    0%{
+        left:100vw;
+    }
+    100%{
+        left:-10vw;
+    }
 }
