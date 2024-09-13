@@ -1,3 +1,10 @@
+//variables
+score=0;
+cross=true;
+
+
+
+// function for keys
 document.onkeydown=function(e){
     console.log("key code is ",e.keyCode);
     if(e.keyCode==38 || e.keyCode==32){
@@ -16,12 +23,13 @@ document.onkeydown=function(e){
     if(e.keyCode==37){
         mario=document.querySelector(".mario")
         marioNegativeX=parseInt(window.getComputedStyle(mario,null).getPropertyValue('left'));
-        mario.style.left=(marioX -100)+"px";
+        mario.style.left=(marioNegativeX -100)+"px";
     }
 
     
 }
 
+// function for collision detection
 setInterval(()=>{
     mario=document.querySelector(".mario")
     obstacle=document.querySelector(".obstacle");
@@ -36,7 +44,25 @@ setInterval(()=>{
     offsetX=Math.abs(dx-ox)
     offsetY=Math.abs(dy-oy)
 
-    if(offsetX<93 && offsetY<52){
+    if(offsetX<113 && offsetY<52){
         obstacle.classList.remove('obstacleAni')
     }
-},100)
+    else if(offsetX <145 && cross){
+        score+=1;
+        updateScore(score)
+        cross=false;
+        setTimeout(()=>{
+            cross=true
+        },1000)
+    }
+
+},10)
+
+function updateScore(score){
+    const scoreElement = document.getElementById("scoreCont");
+    if (scoreElement) { // Check if the element exists
+        scoreElement.innerText = "Your score: " + score; 
+    } else {
+        console.error('Element with id "scoreCont" not found.');
+    } 
+}
