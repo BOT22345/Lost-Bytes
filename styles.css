@@ -77,7 +77,7 @@ body{
     top:200vh;
     left:90vh;
     border-radius:20px;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 #restartButton::before {
@@ -93,9 +93,9 @@ body{
     z-index: -1;
    }
    
-#restartButton:hover::before {
+   #restartButton:hover::before {
     transform: translateX(0);
-}
+   }
 
 
 /* animations */

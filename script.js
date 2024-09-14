@@ -2,6 +2,8 @@
 score = 0;
 cross = true;
 
+
+
 //audio varaibles 
 audio=new Audio('./Assets/Main.mp3');
 audioGameOver=new Audio('./Assets/gameOver.mp3');
@@ -9,12 +11,15 @@ audioGameOver=new Audio('./Assets/gameOver.mp3');
 setInterval(()=>{
 },2000);
 
+audio.play()
 // function for keys
 document.onkeydown = function (e) {
+    
     console.log("key code is ", e.keyCode);
     if (e.keyCode == 38 || e.keyCode == 32) {
         mario = document.querySelector(".mario")
         mario.classList.add("animateMario")
+        audio.play()
         setTimeout(() => {
             mario.classList.remove("animateMario");
         }, 1000)
@@ -26,22 +31,23 @@ document.onkeydown = function (e) {
         mario.style.left = marioX + 100 + "px";
     }
     if (e.keyCode == 37) {
-        audio.play()
+        
         mario = document.querySelector(".mario")
         marioNegativeX = parseInt(window.getComputedStyle(mario, null).getPropertyValue('left'));
         mario.style.left = (marioNegativeX - 100) + "px";
     }
-
-
+    
+    
 }
 
 // function for collision detection
 setInterval(() => {
+
     mario = document.querySelector(".mario")
     obstacle = document.querySelector(".obstacle");
     gameOver = document.querySelector(".gameOver");
     restartButton=document.querySelector("#restartButton");
-
+    
     dx = parseInt(window.getComputedStyle(mario, null).getPropertyValue('left'))
     dy = parseInt(window.getComputedStyle(mario, null).getPropertyValue('top'));
 
@@ -55,6 +61,7 @@ setInterval(() => {
         obstacle.classList.remove('obstacleAni')
         gameOver.innerText="GameOver Click Below to start again";
         audioGameOver.play()
+        audio.pause();
         audio.pause();
         restartButton.style.visibility="visible";
         restartButton.classList.add('animateButton')
@@ -84,3 +91,31 @@ function updateScore(score) {
         console.error('Element with id "scoreCont" not found.');
     }
 }
+
+
+function restartGame() {
+    console.log("hello");
+    score = 0;
+    updateScore(score);
+
+   
+    obstacle = document.querySelector(".obstacle");
+    obstacle.classList.add("obstacleAni"); 
+    obstacle.style.left = '100vw';
+
+    
+    gameOver = document.querySelector(".gameOver");
+    gameOver.innerText = "";
+
+    
+    restartButton = document.querySelector("#restartButton");
+    restartButton.style.visibility = "hidden";
+
+    audio.play();
+    audioGameOver.pause();
+   
+}
+
+
+document.querySelector("#restartButton").addEventListener("click", restartGame);
+
