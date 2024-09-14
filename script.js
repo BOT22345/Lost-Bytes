@@ -56,7 +56,8 @@ setInterval(() => {
         gameOver.innerText="GameOver Click Below to start again";
         audioGameOver.play()
         audio.pause();
-
+        restartButton.style.visibility="visible";
+        restartButton.classList.add('animateButton')
     }
     else if (offsetX < 145 && cross) {
         score += 1;

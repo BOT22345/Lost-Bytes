@@ -74,11 +74,28 @@ body{
     z-index: 1;
     font-family: inherit;
     position:absolute;
-    top:90vh;
+    top:200vh;
     left:90vh;
-
+    border-radius:20px;
+    visibility: hidden;
 }
 
+#restartButton::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(252, 70, 100);
+    transform: translateX(-100%);
+    transition: all .3s;
+    z-index: -1;
+   }
+   
+#restartButton:hover::before {
+    transform: translateX(0);
+}
 
 
 /* animations */
