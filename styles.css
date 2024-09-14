@@ -36,6 +36,27 @@ body{
     bottom:11vh;
     left:300px;
 }
+.gameOver{
+    position:relative;
+    top:63px;
+    font-size:53px;
+    text-align:center;
+    visibility: hidden;
+    font-family: sans-serif;
+}
+
+#scoreCont{
+    position:relative;
+    color:white;
+    font-weight: bold;
+    position:absolute;
+    right:45px;
+    top:31px;
+    border:2px solid rgb(14, 255, 243);
+    padding:10px;
+    font-family: sans-serif;
+    /* width:125px; */
+}
 
 .animateMario{
     animation:marioAnimation 1s linear;

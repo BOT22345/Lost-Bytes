@@ -46,6 +46,7 @@ setInterval(() => {
 
     if (offsetX < 73 && offsetY < 52) {
         obstacle.classList.remove('obstacleAni')
+        gameOver.style.visibility="visible";
     }
     else if (offsetX < 145 && cross) {
         score += 1;
