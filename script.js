@@ -11,10 +11,15 @@ audioGameOver=new Audio('./Assets/gameOver.mp3');
 setInterval(()=>{
 },2000);
 
-audio.play()
+let beginPlayer=true;
+
+
 // function for keys
 document.onkeydown = function (e) {
-    
+    if (beginPlayer && (e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 37)) {
+        audio.play().catch(error => console.log('Audio playback error:', error));
+        beginPlayer = false; 
+    }
     console.log("key code is ", e.keyCode);
     if (e.keyCode == 38 || e.keyCode == 32) {
         mario = document.querySelector(".mario")
