@@ -2,7 +2,12 @@
 score = 0;
 cross = true;
 
+//audio varaibles 
+audio=new Audio('./Assets/Main.mp3');
+audioGameOver=new Audio('./Assets/gameOver.mp3');
 
+setInterval(()=>{
+},2000);
 
 // function for keys
 document.onkeydown = function (e) {
@@ -14,13 +19,14 @@ document.onkeydown = function (e) {
             mario.classList.remove("animateMario");
         }, 1000)
     }
-
+    
     if (e.keyCode == 39) {
         mario = document.querySelector(".mario")
         marioX = parseInt(window.getComputedStyle(mario, null).getPropertyValue('left'));
         mario.style.left = marioX + 100 + "px";
     }
     if (e.keyCode == 37) {
+        audio.play()
         mario = document.querySelector(".mario")
         marioNegativeX = parseInt(window.getComputedStyle(mario, null).getPropertyValue('left'));
         mario.style.left = (marioNegativeX - 100) + "px";
@@ -34,6 +40,7 @@ setInterval(() => {
     mario = document.querySelector(".mario")
     obstacle = document.querySelector(".obstacle");
     gameOver = document.querySelector(".gameOver");
+    restartButton=document.querySelector("#restartButton");
 
     dx = parseInt(window.getComputedStyle(mario, null).getPropertyValue('left'))
     dy = parseInt(window.getComputedStyle(mario, null).getPropertyValue('top'));
@@ -46,7 +53,10 @@ setInterval(() => {
 
     if (offsetX < 73 && offsetY < 52) {
         obstacle.classList.remove('obstacleAni')
-        gameOver.style.visibility="visible";
+        gameOver.innerText="GameOver Click Below to start again";
+        audioGameOver.play()
+        audio.pause();
+
     }
     else if (offsetX < 145 && cross) {
         score += 1;

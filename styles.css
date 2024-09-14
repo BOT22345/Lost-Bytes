@@ -38,10 +38,11 @@ body{
 }
 .gameOver{
     position:relative;
+    color:aqua;
     top:63px;
     font-size:53px;
     text-align:center;
-    visibility: hidden;
+    /* visibility: hidden; */
     font-family: sans-serif;
 }
 
@@ -56,14 +57,42 @@ body{
     padding:10px;
     font-family: sans-serif;
     /* width:125px; */
+    border-radius:10px;
+}
+#restartButton{
+    display: inline-block;
+    padding: 0.9rem 1.8rem;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    border: 3px solid rgb(14, 255, 243);
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+    font-family: inherit;
+    position:absolute;
+    top:90vh;
+    left:90vh;
+
 }
 
+
+
+/* animations */
 .animateMario{
     animation:marioAnimation 1s linear;
 }
 
 .obstacleAni{
     animation:obstacleAni 5s linear infinite;
+}
+
+.animateButton{
+    animation:restartButton 7s linear forwards;
+    animation-delay:4s; 
 }
 
 @keyframes marioAnimation{
@@ -91,4 +120,9 @@ body{
     100%{
         left:-10vw;
     }
+}
+
+@keyframes restartButton {
+    from{top:90vh}
+    to{top:24vh}
 }
